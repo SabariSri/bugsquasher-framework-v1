@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Sample Maven Framework" parallel="tests">
+    <parameter name="browser" value="chrome"/>
+    <test verbose="2" preserve-order="true" name="HackathonMavenFramework" parallel="tests">
+        <classes>
+            <class name="com.test.GoogleTest">
+           <!-- <class name="com.test.GoogleTestSecond">-->
+                <!-- <methods>
+                     <include name="testMethod"/>
+                 </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>
