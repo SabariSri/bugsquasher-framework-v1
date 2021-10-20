@@ -10,7 +10,7 @@ import com.basetest.AbstractTest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class ZippoTest extends AbstractTest{
+public class ZippoTest extends AbstractTest {
 
 	@Test
 	public void verifyZippoPassStatus() {

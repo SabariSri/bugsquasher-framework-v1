@@ -10,13 +10,13 @@ public class GoogleTest extends AbstractTest {
 
 	@Test
 	public void sampleTest() {
-		report.startTest("Random Test - 001");
+		reporter().startTest("Web UI Test - 001");
 		googleHomePage.searchText("NTR");
 	}
 
 	@Test(dataProvider = "uiTestData", dataProviderClass = com.datadrivers.TestDataProviders.class)
 	public void sampleTest(HashMap<String, String> data) {
-		report.startTest(data.get("TestName"));
+		reporter().startTest(data.get("TestName"));
 		googleHomePage.searchText(data.get("SearchKey"));
 	}
 
