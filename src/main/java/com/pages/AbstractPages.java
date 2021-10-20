@@ -12,7 +12,7 @@ public abstract class AbstractPages extends AbstractSetup {
 	public void setText(String element, String value, String refKey) {
 		try {
 			findElement(element).sendKeys(value);
-			reporter().stepPass("Typed " + value + " in " + refKey);
+			reporter().stepPass("Typed '" + value + "' in " + refKey);
 		} catch (Exception e) {
 			reporter().stepFail("Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
 		}
@@ -21,7 +21,7 @@ public abstract class AbstractPages extends AbstractSetup {
 	public void setText(WebElement element, String value, String refKey) {
 		try {
 			element.sendKeys(value);
-			reporter().stepPass("Typed " + value + " in " + refKey);
+			reporter().stepPass("Typed '" + value + "' in " + refKey);
 		} catch (Exception e) {
 			reporter().stepFail("Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
 		}
@@ -31,7 +31,7 @@ public abstract class AbstractPages extends AbstractSetup {
 		try {
 			element.sendKeys(value);
 			element.sendKeys(Keys.ENTER);
-			reporter().stepPass("Typed" + value + " in " + refKey + " and clicked Enter");
+			reporter().stepPass("Typed '" + value + "' in " + refKey + " and clicked Enter");
 		} catch (Exception e) {
 			reporter().stepFail(
 					"Cant able to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
@@ -42,7 +42,7 @@ public abstract class AbstractPages extends AbstractSetup {
 		try {
 			findElement(element).sendKeys(value);
 			findElement(element).sendKeys(Keys.ENTER);
-			reporter().stepPass("Typed " + value + " in " + refKey);
+			reporter().stepPass("Typed '" + value + "' in " + refKey + " and clicked Enter");
 		} catch (Exception e) {
 			reporter().stepFail("Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
 		}
@@ -51,7 +51,7 @@ public abstract class AbstractPages extends AbstractSetup {
 	public void clickOn(String element, String refKey) {
 		try {
 			findElement(element).click();
-			reporter().stepPass("Clicked on ");
+			reporter().stepPass("Clicked on " + refKey);
 		} catch (Exception e) {
 			reporter().stepFail("Unable to click on " + "\n\n" + "ERROR MESSAGE :: " + e.toString());
 		}
@@ -71,10 +71,10 @@ public abstract class AbstractPages extends AbstractSetup {
 
 		try {
 			String text = findElement(element).getText();
-			reporter().stepInfo("Text of " + " is " + text);
+			reporter().stepInfo("Text of " + refKey + " is " + text);
 			return text;
 		} catch (Exception e) {
-			reporter().stepFail("Cant able to getText of " + "\n\n" + "ERROR MESSAGE :: " + e.toString());
+			reporter().stepFail("Unable to getText of " + "\n\n" + "ERROR MESSAGE :: " + e.toString());
 			return null;
 		}
 	}
