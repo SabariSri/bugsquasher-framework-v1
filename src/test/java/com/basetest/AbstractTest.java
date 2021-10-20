@@ -18,10 +18,12 @@ public class AbstractTest extends AbstractSetup {
 	@BeforeMethod
 	public void launchUrl() {
 		try {
-			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			getDriver().get(ConfigConstants.BASE_URL);
-			getDriver().manage().window().maximize();
-			loadPages();
+			if (getDriver() != null) {
+				getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+				getDriver().get(ConfigConstants.BASE_URL);
+				getDriver().manage().window().maximize();
+				loadPages();
+			}
 			log.info("Completed beforeTest method");
 		} catch (Exception e) {
 			reporter().stepFail("Unable to launch url :: " + ConfigConstants.BASE_URL + "\n\n" + " ERROR MESSAGE :: "

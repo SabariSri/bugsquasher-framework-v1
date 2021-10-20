@@ -12,12 +12,12 @@ public class ApiAsserts extends AbstractSetup {
 
 	public static void responseCodeValiddation(Response response, int statusCode) {
 		try {
-			Assert.assertEquals(statusCode, response.getStatusCode());
-			reporter().stepPass("Successfully validdated status code, status code is :: " + response.getStatusCode());
+			Assert.assertEquals(response.getStatusCode(), statusCode);
+			reporter().stepPass("Successfully validdated status code :: " + statusCode);
 		} catch (AssertionError e) {
 			reporter().stepFailErrorStack(e.fillInStackTrace());
 			reporter().stepFail(
-					"Expected status code is :: " + statusCode + " , insted of getting :: " + response.getStatusCode());
+					"Expected status code is :: " + statusCode + " - insted getting :: " + response.getStatusCode());
 		} catch (Exception e) {
 			reporter().stepFailErrorStack(e.fillInStackTrace());
 		}
