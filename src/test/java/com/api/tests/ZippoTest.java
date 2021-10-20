@@ -1,5 +1,7 @@
 package com.api.tests;
 
+import java.util.HashMap;
+
 import org.testng.annotations.Test;
 
 import com.api.utils.ApiAsserts;
@@ -17,10 +19,10 @@ public class ZippoTest extends AbstractTest {
 		ApiAsserts.responseCodeValiddation(response, 201);
 	}
 	
-	@Test
-	public void verifyZippoFailStatus() {
-		reporter().startTest("API Test - 002");
-		Response response = RestAssured.given().when().get("/IN/99999");
-		ApiAsserts.responseCodeValiddation(response, 404);
+	@Test(dataProvider = "apiTestData", dataProviderClass = com.datadrivers.TestDataProviders.class)
+	public void verifyZippoFailStatus(HashMap<String, String> data) {
+		reporter().startTest(data.get("TestName"));
+		Response response = RestAssured.given().when().get(data.get("EndPoint"));
+		ApiAsserts.responseCodeValiddation(response, Integer.parseInt(data.get("StatusCode")));
 	}
 }
