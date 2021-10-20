@@ -6,3 +6,8 @@ Integrated the following,
 3. Maven
 4. Extent Reports
 5. Apache POI
+6. RestAssured
+
+To Do
+CI Pipeline
+mWeb config and functions
