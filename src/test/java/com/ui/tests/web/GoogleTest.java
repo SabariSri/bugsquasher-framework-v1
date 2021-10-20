@@ -14,7 +14,7 @@ public class GoogleTest extends AbstractTest {
 		googleHomePage.searchText("NTR");
 	}
 
-	@Test(dataProvider = "googleTest", dataProviderClass = com.datadrivers.TestDataProviders.class)
+	@Test(dataProvider = "uiTestData", dataProviderClass = com.datadrivers.TestDataProviders.class)
 	public void sampleTest(HashMap<String, String> data) {
 		report.startTest(data.get("TestName"));
 		googleHomePage.searchText(data.get("SearchKey"));
