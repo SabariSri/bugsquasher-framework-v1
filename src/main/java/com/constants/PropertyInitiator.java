@@ -8,11 +8,11 @@ public class PropertyInitiator {
 	private PropertyInitiator() {
 	}
 
-	public static Properties objectReturn() {
+	public static Properties objectReturn(String propertyName) {
 		try {
 			Properties obj = new Properties();
-			FileInputStream objfile = new FileInputStream(
-					System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\ConfigConstants.properties");
+			FileInputStream objfile = new FileInputStream(System.getProperty("user.dir")
+					+ "\\src\\test\\resources\\Properties\\" + propertyName + ".properties");
 			obj.load(objfile);
 			return obj;
 		} catch (Exception e) {

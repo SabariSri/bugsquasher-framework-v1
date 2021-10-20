@@ -8,7 +8,7 @@ public class GoogleTestSecond extends AbstractTest {
 
 	@Test
 	public void sampleTest() {
-		report.startTest("Random Test - 002");
+		reporter().startTest("Web UI Test - 002");
 		googleHomePageSecond.searchText("Rajini");
 	}
 }
