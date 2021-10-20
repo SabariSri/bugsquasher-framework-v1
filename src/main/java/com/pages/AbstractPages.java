@@ -31,7 +31,7 @@ public abstract class AbstractPages extends AbstractSetup {
 		try {
 			element.sendKeys(value);
 			element.sendKeys(Keys.ENTER);
-			reporter().stepPass("Typed " + value + " in " + refKey);
+			reporter().stepPass("Typed" + value + " in " + refKey + " and clicked Enter");
 		} catch (Exception e) {
 			reporter().stepFail(
 					"Cant able to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
@@ -60,7 +60,7 @@ public abstract class AbstractPages extends AbstractSetup {
 	public void clickOn(WebElement element, String refKey) {
 		try {
 			element.click();
-			reporter().stepPass("Clicked on ");
+			reporter().stepPass("Clicked on " + refKey);
 		} catch (NotFoundException | NullPointerException e) {
 			e.printStackTrace();
 			reporter().stepFail("Unable to click on " + "\n\n" + "ERROR MESSAGE :: " + e.toString());

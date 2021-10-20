@@ -9,7 +9,7 @@ public class GoogleHomePage extends AbstractPages {
 	WebElement SearchFlighHeader;
 
 	public void searchText(String searchKey) {
-		clickOn(SearchFlighHeader, "Search Bar");
-		setTextAndClickEnter(SearchFlighHeader, searchKey, "Submit");
+		clickOn(SearchFlighHeader, "Search Button");
+		setTextAndClickEnter(SearchFlighHeader, searchKey, "Search Bar");
 	}
 }
