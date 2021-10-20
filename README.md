@@ -9,5 +9,5 @@ Integrated the following,
 6. RestAssured
 
 To Do
-CI Pipeline
-mWeb config and functions
+1. CI Pipeline
+2. mWeb config and functions
