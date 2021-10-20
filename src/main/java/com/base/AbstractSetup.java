@@ -34,15 +34,16 @@ public class AbstractSetup {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		} else if (browser.equalsIgnoreCase("api")) {
 		}
 	}
-	
+
 	@AfterSuite
 	public void afterSuite() {
 		report.endReport();
 		driver.quit();
 	}
-	
+
 	public static WebDriver getDriver() {
 		if (driver != null) {
 			return driver;
@@ -50,7 +51,7 @@ public class AbstractSetup {
 		return driver;
 	}
 
-	public CustomExtentReports reporter() {
+	public static CustomExtentReports reporter() {
 		if (report != null) {
 			return report;
 		}

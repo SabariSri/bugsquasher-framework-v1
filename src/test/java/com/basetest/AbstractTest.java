@@ -7,8 +7,8 @@ import org.testng.annotations.BeforeMethod;
 
 import com.base.AbstractSetup;
 import com.constants.ConfigConstants;
-import com.pages.GoogleHomePage;
-import com.pages.GoogleHomePageSecond;
+import com.ui.pages.GoogleHomePage;
+import com.ui.pages.GoogleHomePageSecond;
 
 public class AbstractTest extends AbstractSetup {
 

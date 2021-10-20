@@ -28,6 +28,10 @@ public class CustomExtentReports {
 		logger.log(LogStatus.PASS, passText);
 	}
 
+	public void stepFailErrorStack(Throwable error) {
+		logger.log(LogStatus.FAIL, error.fillInStackTrace());
+	}
+	
 	public void stepFail(String failText) {
 		logger.log(LogStatus.FAIL, failText);
 	}

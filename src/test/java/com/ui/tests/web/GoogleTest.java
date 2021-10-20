@@ -10,7 +10,7 @@ public class GoogleTest extends AbstractTest {
 
 	@Test
 	public void sampleTest() {
-		report.startTest("Random-Test");
+		report.startTest("Random Test - 001");
 		googleHomePage.searchText("NTR");
 	}
 

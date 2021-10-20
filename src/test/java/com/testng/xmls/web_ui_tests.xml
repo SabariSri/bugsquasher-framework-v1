@@ -6,6 +6,7 @@
 	<test verbose="2" preserve-order="true" name="Smoke Test - Web UI">
 		<classes>
 			<class name="com.ui.tests.web.GoogleTest"></class>
+			<class name="com.ui.tests.web.GoogleTestSecond"></class>
 		</classes>
 	</test>
 </suite>

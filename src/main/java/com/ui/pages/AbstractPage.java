@@ -1,4 +1,4 @@
-package com.pages;
+package com.ui.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import com.base.AbstractSetup;
 
-public abstract class AbstractPages extends AbstractSetup {
+public abstract class AbstractPage extends AbstractSetup {
 
 	public void setText(String element, String value, String refKey) {
 		try {

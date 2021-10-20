@@ -1,9 +1,9 @@
-package com.pages;
+package com.ui.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogleHomePage extends AbstractPages {
+public class GoogleHomePage extends AbstractPage {
 
 	@FindBy(xpath = "//input[@title='Search']")
 	WebElement SearchFlighHeader;
