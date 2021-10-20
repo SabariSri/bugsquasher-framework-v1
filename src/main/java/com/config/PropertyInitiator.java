@@ -1,4 +1,4 @@
-package com;
+package com.config;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -11,7 +11,7 @@ public class PropertyInitiator {
     try {
       Properties obj = new Properties();
       FileInputStream objfile =
-          new FileInputStream(System.getProperty("user.dir") + "\\ConfigConstants.properties");
+          new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\Properties\\ConfigConstants.properties");
       obj.load(objfile);
       return obj;
     } catch (Exception j) {

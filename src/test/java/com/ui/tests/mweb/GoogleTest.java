@@ -1,5 +1,6 @@
-package com.test;
+package com.ui.tests.mweb;
 
+import com.basetest.AbstractTest;
 import com.pages.GoogleHomePage;
 import org.testng.annotations.Test;
 

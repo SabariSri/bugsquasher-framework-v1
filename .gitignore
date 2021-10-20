@@ -1,5 +1,5 @@
 ### Maven template
-target/
+/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -27,3 +27,6 @@ buildNumber.properties
 # Maven
 log/
 target/
+
+# TestNG
+/test-output/

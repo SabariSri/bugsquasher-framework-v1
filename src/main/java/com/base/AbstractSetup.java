@@ -1,17 +1,19 @@
 package com.base;
 
-import com.reports.CustomExtentReports;
-import com.utils.LoggerClass;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.log4testng.Logger;
 
-import java.util.concurrent.TimeUnit;
+import com.reports.CustomExtentReports;
+import com.utils.LoggerClass;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AbstractSetup {
 
@@ -19,7 +21,7 @@ public class AbstractSetup {
   protected static WebDriver driver;
   protected static Logger log;
 
-  @BeforeSuite
+  @BeforeClass
   @Parameters({"browser"})
   public static void driverInitiator(String browser) {
     // report = new CustomExtentReports();

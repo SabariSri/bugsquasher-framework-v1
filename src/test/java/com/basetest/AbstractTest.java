@@ -1,8 +1,8 @@
-package com.test;
+package com.basetest;
 
-import com.ConfigConstants;
 import com.pages.GoogleHomePage;
 import com.base.AbstractSetup;
+import com.config.ConfigConstants;
 import com.pages.GoogleHomePageSecond;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;

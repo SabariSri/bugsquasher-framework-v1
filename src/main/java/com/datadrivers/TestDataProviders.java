@@ -1,7 +1,8 @@
-package com.testdata;
+package com.datadrivers;
 
-import com.testdata.ExcelUtils;
 import org.testng.annotations.DataProvider;
+
+import com.datadrivers.ExcelUtils;
 
 public class TestDataProviders {
 
