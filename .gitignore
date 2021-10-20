@@ -1,5 +1,11 @@
+# Maven
+log/
+target/
+
+# TestNG
+test-output/
+
 ### Maven template
-/target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -23,10 +29,3 @@ buildNumber.properties
 
 # Mac
 .DS_Store
-
-# Maven
-log/
-target/
-
-# TestNG
-/test-output/

@@ -1,13 +1,23 @@
 package com.ui.tests.web;
 
-import com.basetest.AbstractTest;
-import com.pages.GoogleHomePage;
+import java.util.HashMap;
+
 import org.testng.annotations.Test;
+
+import com.basetest.AbstractTest;
 
 public class GoogleTest extends AbstractTest {
 
-  @Test
-  public void sampleTest() {
-    googleHomePage.searchText("NTR");
-  }
+	@Test
+	public void sampleTest() {
+		report.startTest("Random-Test");
+		googleHomePage.searchText("NTR");
+	}
+
+	@Test(dataProvider = "googleTest", dataProviderClass = com.datadrivers.TestDataProviders.class)
+	public void sampleTest(HashMap<String, String> data) {
+		report.startTest(data.get("TestName"));
+		googleHomePage.searchText(data.get("SearchKey"));
+	}
+
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Epam Testing Hackathon" parallel="tests">
+	<parameter name="browser" value="chrome" />
+	<test verbose="2" preserve-order="true" name="Smoke Test - Web UI">
+		<classes>
+			<class name="com.ui.tests.web.GoogleTest"></class>
+		</classes>
+	</test>
+</suite>

@@ -1,47 +1,41 @@
 package com.basetest;
 
-import com.pages.GoogleHomePage;
-import com.base.AbstractSetup;
-import com.config.ConfigConstants;
-import com.pages.GoogleHomePageSecond;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
-
 import java.util.concurrent.TimeUnit;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+import com.base.AbstractSetup;
+import com.constants.ConfigConstants;
+import com.pages.GoogleHomePage;
+import com.pages.GoogleHomePageSecond;
 
 public class AbstractTest extends AbstractSetup {
 
-  protected GoogleHomePage googleHomePage = new GoogleHomePage();
-  protected GoogleHomePageSecond googleHomePageSecond = new GoogleHomePageSecond();
+	protected GoogleHomePage googleHomePage = new GoogleHomePage();
+	protected GoogleHomePageSecond googleHomePageSecond = new GoogleHomePageSecond();
 
-  @BeforeMethod
-  // @Parameters({"browser"})
-  public void launchUrl() {
-    try {
-      getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-      getDriver().get(ConfigConstants.URL);
-      getDriver().manage().window().maximize();
-      load();
-      System.out.println("Completed before test");
-    } catch (Exception e) {
-      reporter()
-          .stepFail(
-              "Cant able to launch url :: "
-                  + ConfigConstants.URL
-                  + "\n\n"
-                  + " ERROR MESSAGE :: "
-                  + e.toString());
-    }
-  }
+	@BeforeMethod
+	public void launchUrl() {
+		try {
+			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			getDriver().get(ConfigConstants.BASE_URL);
+			getDriver().manage().window().maximize();
+			loadPages();
+			log.info("Completed beforeTest method");
+		} catch (Exception e) {
+			reporter().stepFail("Unable to launch url :: " + ConfigConstants.BASE_URL + "\n\n" + " ERROR MESSAGE :: "
+					+ e.toString());
+		}
+	}
 
-  void load() {
-    googleHomePage.loadElements();
-    googleHomePageSecond.loadElements();
-  }
+	@AfterMethod
+	public void afterMethod() {
+		reporter().endTest();
+	}
 
-  @AfterMethod
-  public void afterMethod() {
-    // reporter().endTest();
-    driver.quit();
-  }
+	private void loadPages() {
+		googleHomePage.loadElements();
+		googleHomePageSecond.loadElements();
+	}
 }

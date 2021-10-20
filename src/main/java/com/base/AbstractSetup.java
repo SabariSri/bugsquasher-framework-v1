@@ -6,7 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.log4testng.Logger;
 
@@ -17,49 +18,55 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class AbstractSetup {
 
-  protected static CustomExtentReports report;
-  protected static WebDriver driver;
-  protected static Logger log;
+	protected static CustomExtentReports report = new CustomExtentReports();
+	protected static WebDriver driver;
+	protected static Logger log;
 
-  @BeforeClass
-  @Parameters({"browser"})
-  public static void driverInitiator(String browser) {
-    // report = new CustomExtentReports();
-    if (browser.equalsIgnoreCase("chrome")) {
-      WebDriverManager.chromedriver().setup();
-      driver = new ChromeDriver();
-    } else if (browser.equalsIgnoreCase("firefox")) {
-      WebDriverManager.firefoxdriver().setup();
-      driver = new FirefoxDriver();
-      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-  }
+	@BeforeSuite
+	@Parameters({ "browser" })
+	public static void beforeSuite(String browser) {
+		report.startReport();
+		startLogger();
+		if (browser.equalsIgnoreCase("chrome")) {
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			WebDriverManager.firefoxdriver().setup();
+			driver = new FirefoxDriver();
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		}
+	}
+	
+	@AfterSuite
+	public void afterSuite() {
+		report.endReport();
+		driver.quit();
+	}
+	
+	public static WebDriver getDriver() {
+		if (driver != null) {
+			return driver;
+		}
+		return driver;
+	}
 
-  public static WebDriver getDriver() {
-    if (driver != null) {
-      return driver;
-    }
-    return driver;
-  }
+	public CustomExtentReports reporter() {
+		if (report != null) {
+			return report;
+		}
+		return report;
+	}
 
-  public CustomExtentReports reporter() {
+	private static void startLogger() {
+		log = Logger.getLogger(LoggerClass.class);
+	}
 
-    if (report != null) {
-      return report;
-    }
-    return report;
-  }
+	public void tearDownMain() {
+		driver.manage().deleteAllCookies();
+		driver.close();
+	}
 
-  private static void startLogger() {
-    log = Logger.getLogger(LoggerClass.class);
-  }
-
-  public void tearDownMain() {
-    driver.manage().deleteAllCookies();
-    driver.close();
-  }
-
-  public void loadElements() {
-    PageFactory.initElements(getDriver(), this);
-  }
+	public void loadElements() {
+		PageFactory.initElements(getDriver(), this);
+	}
 }
