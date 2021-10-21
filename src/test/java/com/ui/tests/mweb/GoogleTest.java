@@ -7,8 +7,9 @@ import org.testng.annotations.Test;
 
 public class GoogleTest extends AbstractTest {
 
-  @Test
-  public void sampleTest() {
-    googleHomePage.searchText("NTR");
-  }
+	@Test
+	public void sampleTest() {
+		reporter().startTest("Mweb Test - 001");
+		googleHomePage.searchText("NTR");
+	}
 }

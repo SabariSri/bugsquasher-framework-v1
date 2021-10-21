@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.testng.SkipException;
 
-import com.constants.ConfigConstants;
+import com.constants.Constants;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -14,10 +14,10 @@ public class CustomExtentReports {
 	public static ExtentTest logger;
 
 	public void startReport() {
-		extent = new ExtentReports(ConfigConstants.REPORT_OUTPUT, true);
+		extent = new ExtentReports(Constants.REPORT_OUTPUT, true);
 		extent.addSystemInfo("Host Name", "BeesKnees").addSystemInfo("Environment", "QA").addSystemInfo("User Name",
 				"BugSquashers");
-		extent.loadConfig(new File(ConfigConstants.REPORT_CONFIG_Path));
+		extent.loadConfig(new File(Constants.REPORT_CONFIG_Path));
 	}
 
 	public void startTest(String testcaseName) {

@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class GoogleHomePage extends AbstractPage {
 
-	@FindBy(xpath = "//input[@title='Search']")
+	@FindBy(xpath = "//input[@aria-label='Search']")
 	WebElement SearchFlighHeader;
 
 	public void searchText(String searchKey) {

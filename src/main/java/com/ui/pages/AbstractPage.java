@@ -34,7 +34,7 @@ public abstract class AbstractPage extends AbstractSetup {
 			reporter().stepPass("Typed '" + value + "' in " + refKey + " and clicked Enter");
 		} catch (Exception e) {
 			reporter().stepFail(
-					"Cant able to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
+					"Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
 		}
 	}
 

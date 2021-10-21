@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.constants.ConfigConstants;
+import com.constants.Constants;
 
 public class ExcelUtils {
 
@@ -22,7 +22,7 @@ public class ExcelUtils {
 
 	public Object[][] getTableArray(String SheetName) throws Exception {
 		try {
-			FileInputStream ExcelFile = new FileInputStream(ConfigConstants.EXCEL_Path);
+			FileInputStream ExcelFile = new FileInputStream(Constants.EXCEL_Path);
 			ExcelWBook = new XSSFWorkbook(ExcelFile);
 			ExcelWSheet = ExcelWBook.getSheet(SheetName);
 			int totalRows = ExcelWSheet.getLastRowNum();

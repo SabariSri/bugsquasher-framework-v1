@@ -4,9 +4,10 @@ import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.base.AbstractSetup;
-import com.constants.ConfigConstants;
+import com.constants.Constants;
 import com.ui.pages.GoogleHomePage;
 import com.ui.pages.GoogleHomePageSecond;
 
@@ -16,18 +17,19 @@ public class AbstractTest extends AbstractSetup {
 	protected GoogleHomePageSecond googleHomePageSecond = new GoogleHomePageSecond();
 
 	@BeforeMethod
-	public void launchUrl() {
+	@Parameters({ "browser" })
+	public void launchUrl(String browser) {
 		try {
-			if (getDriver() != null) {
-				getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				getDriver().get(ConfigConstants.BASE_URL);
+			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			getDriver().get(Constants.BASE_URL);
+			if (!browser.equalsIgnoreCase("mobilechrome")) {
 				getDriver().manage().window().maximize();
-				loadPages();
 			}
+			loadPages();
 			log.info("Completed beforeTest method");
 		} catch (Exception e) {
-			reporter().stepFail("Unable to launch url :: " + ConfigConstants.BASE_URL + "\n\n" + " ERROR MESSAGE :: "
-					+ e.toString());
+			reporter().stepFail(
+					"Unable to launch url :: " + Constants.BASE_URL + "\n\n" + " ERROR MESSAGE :: " + e.toString());
 		}
 	}
 
