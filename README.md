@@ -14,9 +14,14 @@ Integrated the following,
 2. TestNG
 3. Maven
 4. Extent Reports
-5. Apache POI
+5. Apache POI - Data Driven
 6. RestAssured
-7. mWeb config and functions
+7. mWeb Configuration
+8. Desktop Web Configuration
+9. Appium Server Start - Programmatically
 
 To Do
 1. CI Pipeline
+2. Better Logging
+3. Pojo Addition
+4. Gif addition in report
