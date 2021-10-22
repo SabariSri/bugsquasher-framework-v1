@@ -15,8 +15,9 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.log4testng.Logger;
 
-import com.constants.*;
+import com.constants.Constants;
 import com.reports.CustomExtentReports;
+import com.utils.AppiumServerCapabalities;
 import com.utils.LoggerClass;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -45,15 +46,22 @@ public class AbstractSetup {
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			} else if (browser.equalsIgnoreCase("api")) {
 				RestAssured.baseURI = Constants.SERVER_URL;
-			} else if (browser.equalsIgnoreCase("mobilechrome")) {
+			} else if (browser.equalsIgnoreCase("androidchrome")) {
+				String appiumLocalServerUrl = AppiumServerCapabalities.startServer();
 				DesiredCapabilities capabilities = DesiredCapabilities.android();
 				capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
 				capabilities.setCapability(MobileCapabilityType.PLATFORM, Platform.ANDROID);
 				capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel Emulator");
-				capabilities.setCapability(MobileCapabilityType.VERSION, "11");
+				capabilities.setCapability(MobileCapabilityType.VERSION, "10");
+				capabilities.setCapability("chromedriverChromeMappingFile", Constants.CHROME_DRIVER_MAPPING);
+				capabilities.setCapability("chromedriverExecutableDir", Constants.DRIVERS_REPO);
+				// capabilities.setCapability("chromedriverExecutable",
+				// Constants.CHROME_DRIVER);
+				// capabilities.setCapability("showChromedriverLog", true);
 				capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
-				URL url = new URL(Constants.APPIUM_SERVER_URL);
+
+				URL url = new URL(appiumLocalServerUrl);
 				driver = new AndroidDriver(url, capabilities);
 			}
 		} catch (Exception e) {
@@ -63,9 +71,12 @@ public class AbstractSetup {
 
 	@AfterSuite
 	public void afterSuite() {
+		AppiumServerCapabalities.stopServer();
 		report.endReport();
-		if (driver != null)
+		if (driver != null) {
+			driver.close();
 			driver.quit();
+		}
 	}
 
 	public static WebDriver getDriver() {

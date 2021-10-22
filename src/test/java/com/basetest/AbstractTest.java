@@ -20,9 +20,9 @@ public class AbstractTest extends AbstractSetup {
 	@Parameters({ "browser" })
 	public void launchUrl(String browser) {
 		try {
-			getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			getDriver().get(Constants.BASE_URL);
-			if (!browser.equalsIgnoreCase("mobilechrome")) {
+			if (!browser.equalsIgnoreCase("androidchrome")) {
+				getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 				getDriver().manage().window().maximize();
 			}
 			loadPages();

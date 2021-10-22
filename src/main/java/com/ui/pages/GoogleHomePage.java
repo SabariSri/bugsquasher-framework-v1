@@ -3,6 +3,8 @@ package com.ui.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.ui.basepage.AbstractPage;
+
 public class GoogleHomePage extends AbstractPage {
 
 	@FindBy(xpath = "//input[@aria-label='Search']")
