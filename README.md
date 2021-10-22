@@ -3,7 +3,7 @@
 Pre-Requisite
 1. Install Java
 2. Install Node.js
-3. Install Appium through Node.js
+3. Install Appium server
 4. Install Android SDK
 5. Set the environment variables with ANDROID_HOME 
 
