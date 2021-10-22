@@ -1,4 +1,6 @@
-# sample-mvn-framework-v1
+# Bug Squasher Framework
+
+This framework have capabilities of running test on 3 different platforms which are Desktop web, Mobile web & Rest APIs. Follow the below procedure to setup and start off with developing mix of testcases.
 
 Pre-Requisite
 1. Install Java
