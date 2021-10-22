@@ -20,12 +20,14 @@ public class AbstractTest extends AbstractSetup {
 	@Parameters({ "browser" })
 	public void launchUrl(String browser) {
 		try {
-			getDriver().get(Constants.BASE_URL);
-			if (!browser.equalsIgnoreCase("androidchrome")) {
-				getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-				getDriver().manage().window().maximize();
+			if (!browser.equalsIgnoreCase("api")) {
+				getDriver().get(Constants.BASE_URL);
+				loadPages();
+				if (!browser.equalsIgnoreCase("androidchrome")) {
+					getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+					getDriver().manage().window().maximize();
+				}
 			}
-			loadPages();
 			log.info("Completed beforeTest method");
 		} catch (Exception e) {
 			reporter().stepFail(
