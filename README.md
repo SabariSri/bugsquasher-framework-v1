@@ -25,3 +25,4 @@ To Do
 2. Better Logging
 3. Pojo Addition
 4. Gif addition in report
+5. Improved console logging
