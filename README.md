@@ -22,7 +22,6 @@ Integrated the following,
 
 To Do
 1. CI Pipeline
-2. Better Logging
 3. Pojo Addition
 4. Gif addition in report
 5. Improved console logging
