@@ -1,4 +1,6 @@
-# sample-mvn-framework-v1
+# Bug Squasher Framework
+
+This framework have capabilities of running test on 3 different platforms which are Desktop web, Mobile web & Rest APIs. Follow the below procedure to setup and start off with developing mix of testcases.
 
 Pre-Requisite
 1. Install Java
@@ -12,9 +14,15 @@ Integrated the following,
 2. TestNG
 3. Maven
 4. Extent Reports
-5. Apache POI
+5. Apache POI - Data Driven
 6. RestAssured
-7. mWeb config and functions
+7. mWeb Configuration
+8. Desktop Web Configuration
+9. Appium Server Start - Programmatically
 
 To Do
 1. CI Pipeline
+2. Better Logging
+3. Pojo Addition
+4. Gif addition in report
+5. Improved console logging
