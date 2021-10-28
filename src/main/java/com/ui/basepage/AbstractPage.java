@@ -1,6 +1,7 @@
 package com.ui.basepage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,24 @@ import org.openqa.selenium.WebElement;
 import com.base.AbstractSetup;
 
 public abstract class AbstractPage extends AbstractSetup {
+
+	public void switch_to_iframe(String iframe) {
+		try {
+			getDriver().switchTo().frame(iframe);
+			reporter().stepPass("Switched to iFrame " + iframe);
+		} catch (Exception e) {
+			reporter().stepFail("Unable to switch to iFrame " + iframe + "\n\n" + "ERROR MESSAGE " + e.toString());
+		}
+	}
+
+	public void scroll_to_element(WebElement element, String refKey) {
+		try {
+			((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+			reporter().stepPass("Scrolled to " + refKey);
+		} catch (Exception e) {
+			reporter().stepFail("Unable to scroll to " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
+		}
+	}
 
 	public void setText(String element, String value, String refKey) {
 		try {
@@ -33,8 +52,7 @@ public abstract class AbstractPage extends AbstractSetup {
 			element.sendKeys(Keys.ENTER);
 			reporter().stepPass("Typed '" + value + "' in " + refKey + " and clicked Enter");
 		} catch (Exception e) {
-			reporter().stepFail(
-					"Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
+			reporter().stepFail("Unable to type " + value + " in " + refKey + "\n\n" + "ERROR MESSAGE " + e.toString());
 		}
 	}
 
