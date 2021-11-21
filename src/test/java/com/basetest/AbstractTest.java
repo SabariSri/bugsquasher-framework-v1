@@ -23,7 +23,7 @@ public class AbstractTest extends AbstractSetup {
 			if (!browser.equalsIgnoreCase("api")) {
 				getDriver().get(Constants.BASE_URL);
 				loadPages();
-				if (!browser.equalsIgnoreCase("androidchrome")) {
+				if (browser.equalsIgnoreCase("chrome")) {
 					getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 					getDriver().manage().window().maximize();
 				}

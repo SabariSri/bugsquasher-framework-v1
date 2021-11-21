@@ -19,6 +19,7 @@ Integrated the following,
 7. mWeb Configuration
 8. Desktop Web Configuration
 9. Appium Server Start - Programmatically
+10. Browser Stack Implementation - Both iOS & Android
 
 To Do
 1. CI Pipeline

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="BugSquasher Basic Tests" parallel="tests">
-	<parameter name="browser" value="chrome" />
-	<test verbose="2" preserve-order="true" name="Smoke Test - Web UI">
+<suite name="BugSquasher Basic Tests">
+	<parameter name="browser" value="ios-browser-stack" />
+	<test verbose="2" preserve-order="true"
+		name="Smoke Test - iOS mWeb UI">
 		<classes>
 			<class name="com.ui.tests.web.GoogleTest"></class>
 			<class name="com.ui.tests.web.GoogleTestSecond"></class>

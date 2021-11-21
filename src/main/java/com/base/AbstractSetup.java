@@ -1,6 +1,7 @@
 package com.base;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Platform;
@@ -9,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -28,8 +30,14 @@ import io.restassured.RestAssured;
 public class AbstractSetup {
 
 	private static CustomExtentReports report = new CustomExtentReports();
+	private static Random randomNumber = new Random();
 	private static WebDriver driver;
 	public static Logger log;
+	private static String browserStackUserName = Constants.get(Constants.configProperties, "bsAutomateUserName");
+	private static String browserStackAccessKey = Constants.get(Constants.configProperties, "bsAutomateAccessKey");
+	private static String browserStackServer = Constants.get(Constants.configProperties, "bsAutomateServer");
+	private static final String URL = "https://" + browserStackUserName + ":" + browserStackAccessKey
+			+ browserStackServer;
 
 	@BeforeSuite
 	@Parameters({ "browser" })
@@ -46,6 +54,23 @@ public class AbstractSetup {
 				driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			} else if (browser.equalsIgnoreCase("api")) {
 				RestAssured.baseURI = Constants.SERVER_URL;
+			} else if (browser.contains("browser-stack")) {
+				DesiredCapabilities caps = new DesiredCapabilities();
+				caps.setCapability("realMobile", "true");
+				caps.setCapability("browserstack.debug", "true");
+				caps.setCapability("browserstack.networkLogs", "true");
+				caps.setCapability("name", "BugSquasher Sample Test"); // test name
+				caps.setCapability("build", "BugSquasher Build - " + randomNumber.nextInt(1000));
+				if (browser.equals("ios-browser-stack")) {
+					caps.setCapability("browserName", "iPhone");
+					caps.setCapability("device", "iPhone 11");
+					caps.setCapability("os_version", "14.0");
+				} else if (browser.equals("android-browser-stack")) {
+					caps.setCapability("browserName", "Android");
+					caps.setCapability("device", "Samsung Galaxy S9 Plus");
+					caps.setCapability("os_version", "9.0");
+				}
+				driver = new RemoteWebDriver(new URL(URL), caps);
 			} else if (browser.equalsIgnoreCase("androidchrome")) {
 				String appiumLocalServerUrl = AppiumServerCapabalities.startServer();
 				DesiredCapabilities capabilities = DesiredCapabilities.android();
@@ -60,7 +85,6 @@ public class AbstractSetup {
 				// Constants.CHROME_DRIVER);
 				// capabilities.setCapability("showChromedriverLog", true);
 				capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
-
 				URL url = new URL(appiumLocalServerUrl);
 				driver = new AndroidDriver(url, capabilities);
 			}

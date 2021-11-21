@@ -7,7 +7,7 @@ public class Constants {
 	private static final String sourcePath = System.getProperty("user.dir");
 
 	// Framework Constants
-	private static Properties configProperties = PropertyInitiator.objectReturn("ConfigConstants");
+	public static Properties configProperties = PropertyInitiator.objectReturn("ConfigConstants");
 	public static final String EXCEL_Path = sourcePath + configProperties.getProperty("excelPath");
 	public static final String REPORT_CONFIG_Path = sourcePath + configProperties.getProperty("reportConfig");
 	public static final String REPORT_OUTPUT = sourcePath + configProperties.getProperty("reportOutput");
