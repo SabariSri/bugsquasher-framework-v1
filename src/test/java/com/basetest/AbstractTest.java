@@ -8,6 +8,8 @@ import org.testng.annotations.Parameters;
 
 import com.base.AbstractSetup;
 import com.constants.Constants;
+import com.ui.pages.FormRecognizer;
+import com.ui.pages.GoodsAndServiceTaxPage;
 import com.ui.pages.GoogleHomePage;
 import com.ui.pages.GoogleHomePageSecond;
 
@@ -15,7 +17,9 @@ public class AbstractTest extends AbstractSetup {
 
 	protected GoogleHomePage googleHomePage = new GoogleHomePage();
 	protected GoogleHomePageSecond googleHomePageSecond = new GoogleHomePageSecond();
-
+	protected GoodsAndServiceTaxPage goodsAndServiceTaxPage = new GoodsAndServiceTaxPage();
+	protected FormRecognizer formRecognizer = new FormRecognizer();
+	
 	@BeforeMethod
 	@Parameters({ "browser" })
 	public void launchUrl(String browser) {
