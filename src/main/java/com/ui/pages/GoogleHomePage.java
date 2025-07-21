@@ -7,11 +7,11 @@ import com.ui.basepage.AbstractPage;
 
 public class GoogleHomePage extends AbstractPage {
 
-	@FindBy(xpath = "//input[@aria-label='Search']")
-	WebElement SearchFlighHeader;
+	@FindBy(xpath = "//textarea[@aria-label='Search']")
+	WebElement SearchBox;
 
 	public void searchText(String searchKey) {
-		clickOn(SearchFlighHeader, "Search Button");
-		setTextAndClickEnter(SearchFlighHeader, searchKey, "Search Bar");
+		clickOn(SearchBox, "Search Button");
+		setTextAndClickEnter(SearchBox, searchKey, "Search Bar");
 	}
 }
